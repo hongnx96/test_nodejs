@@ -22,6 +22,7 @@ const typeDefs = gql`
     
     type Query {
         users: [User]
+        user(id: ID!): User
         role(id: ID!): Role
         user_login(id: ID!): UserLogin
         roles: [Role]
@@ -32,10 +33,18 @@ const typeDefs = gql`
         message: String
     }
 
+    type LoginResponse {
+        ok: Boolean
+        message: String
+        user: User
+        token: String
+    }
+
     type Mutation {
         createUser(username: String, password: String, role_id: String): UserResponse
         updateUserById(id: ID!, username: String, password: String, role_id: String): UserResponse
         deleteUserById(id: ID!): UserResponse
+        login(username: String, password: String): LoginResponse
         createRole(role_name: String): Role
     }
 `

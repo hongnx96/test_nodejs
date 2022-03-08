@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const UserLoginSchema = new Schema({
-	// user_id: {
-	// 	type: String
-	// },
+	user_id: {
+		type: String
+	},
 	online_date: {
 		type: Date, required: true, default: Date.now
 	}
